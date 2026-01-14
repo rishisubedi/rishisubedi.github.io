@@ -1,368 +1,377 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rishi Subedi | Quantitative Researcher</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
     <style>
         :root {
-            --bg-color: #0a0b1e;
-            --card-bg: #161b33;
+            --bg-color: #03040a;
+            --glass-bg: rgba(20, 25, 40, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
             --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
+            --text-secondary: #94a3b8;
             --accent: #00f260;
-            --accent-gradient: linear-gradient(135deg, #00f260 0%, #0575e6 100%);
+            --accent-dim: rgba(0, 242, 96, 0.1);
+            --gradient: linear-gradient(135deg, #00f260 0%, #0575e6 100%);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-primary);
-            line-height: 1.6;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* Profile Section */
-        header {
-            text-align: center;
-            padding: 80px 0 60px;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 4px solid #00f260;
-            margin-bottom: 25px;
-            background: url(https://avatars.githubusercontent.com/u/22046969?v=4) center/cover;
-            display: inline-block;
-            box-shadow: 0 0 30px rgba(0, 242, 96, 0.2);
-        }
-
-        h1 {
-            font-weight: 800;
-            font-size: 3rem;
-            letter-spacing: -1px;
-            margin-bottom: 15px;
-        }
-
-        .tagline {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-
-        .social-links a {
-            color: var(--text-primary);
-            font-size: 1.6rem;
-            margin: 0 15px;
-            transition: transform 0.2s, color 0.2s;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        /* Projects Grid */
-        .section-title {
-            font-size: 2rem;
-            margin: 80px 0 40px;
-            border-left: 5px solid var(--accent);
-            padding-left: 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
+        /* Canvas Background */
+        #canvas-bg {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: var(--accent-gradient);
-            opacity: 0;
-            transition: opacity 0.3s;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
         }
 
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .card-desc {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            flex-grow: 1;
-            margin-bottom: 25px;
-            line-height: 1.7;
-        }
-
-        .card-meta {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-            color: #888;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 15px;
-        }
-
-        .language-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-        }
-
-        .lang-python {
-            background-color: #3572A5;
-        }
-
-        .lang-html {
-            background-color: #e34c26;
-        }
-
-        .lang-r {
-            background-color: #198CE7;
-        }
-
-        /* R language color */
-
-        .stars {
-            margin-left: auto;
-            display: flex;
-            align-items: center;
-        }
-
-        .stars i {
-            color: #f1e05a;
-            margin-right: 5px;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        footer {
-            text-align: center;
-            padding: 60px 0;
-            color: #555;
-            font-size: 0.9rem;
-            margin-top: 50px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         /* Navigation */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
-            background: rgba(10, 11, 30, 0.95);
-            backdrop-filter: blur(10px);
+            width: 100%;
             padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 100;
+            background: rgba(3, 4, 10, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        .nav-container {
-            padding: 0 20px;
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
         }
 
         .logo {
-            font-weight: 800;
-            font-size: 1.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #fff;
-            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex; gap: 30px;
         }
 
         .nav-links a {
-            color: #fff;
+            color: var(--text-secondary);
             text-decoration: none;
-            margin-left: 25px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            transition: opacity 0.2s;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            position: relative;
         }
 
         .nav-links a:hover {
-            opacity: 1;
             color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            height: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 242, 96, 0.4);
+        }
+
+        .btn-outline {
+            border-color: var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover { background: #fff; color: #000; border-color: #fff; }
+
+        section { padding: 100px 0; }
+        .section-header { margin-bottom: 60px; text-align: left; }
+        .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; margin-bottom: 10px; }
+        .section-line { width: 60px; height: 4px; background: var(--accent); border-radius: 2px; }
+
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 2px; background: rgba(255, 255, 255, 0.1); }
+        .timeline-item { position: relative; padding-left: 40px; margin-bottom: 50px; }
+        .timeline-dot { position: absolute; left: -6px; top: 5px; width: 14px; height: 14px; background: var(--bg-color); border: 2px solid var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent-dim); }
+        .timeline-date { color: var(--accent); font-size: 0.9rem; font-weight: 600; margin-bottom: 5px; }
+        .timeline-role { font-size: 1.25rem; font-weight: 700; color: #fff; }
+        .timeline-org { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 15px; }
+        .timeline-desc { font-size: 0.95rem; color: #8892b0; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 30px; transition: 0.3s; transform-style: preserve-3d; transform: perspective(1000px); }
+        .card-top { display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px; }
+        .folder-icon { font-size: 2.5rem; color: var(--accent); }
+        .card-links a { color: var(--text-secondary); font-size: 1.2rem; margin-left: 15px; transition: 0.2s; }
+        .card-links a:hover { color: #fff; }
+        .card-title { font-size: 1.4rem; font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px; color: #fff; }
+        .card-desc { font-size: 0.95rem; color: #8892b0; margin-bottom: 25px; min-height: 80px; }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem; font-family: 'Space Mono', monospace; color: var(--text-secondary); }
+
+        footer { text-align: center; padding: 50px 0; border-top: 1px solid var(--glass-border); color: var(--text-secondary); }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
-
-<body class="">
-
+<body>
+    <canvas id="canvas-bg"></canvas>
     <nav>
-        <div class="nav-container">
-            <div class="logo">Rishi.<span style="color: var(--accent);">Quant</span></div>
+        <div class="container nav-content">
+            <a href="#" class="logo">Rishi.<span>Quant</span></a>
             <div class="nav-links">
-                <a href="#research">Research</a>
-                <a href="#strategies">Strategies</a>
-                <a href="mailto:rishisubedi@example.com" style="color: var(--accent);">Contact</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Work</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <div class="container">
-        <header>
-            <div class="profile-img"></div>
-            <h1>Rishi Subedi</h1>
-            <p class="tagline"><strong>Quantitative Researcher</strong> specializing in <strong>Financial Machine
-                    Learning</strong>.<br>
-                Bridging the gap between Deep Learning architectures and Alpha Generation.</p>
-
-            <div class="social-links">
-                <a href="https://github.com/rishisubedi" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="mailto:rishisubedi@example.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/rishi-subedi" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <section class="hero">
+        <div class="container hero-content">
+            <div style="margin-bottom: 20px;">
+                <img src="https://avatars.githubusercontent.com/u/22046969?v=4" alt="Rishi Subedi" style="width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--accent); box-shadow: 0 0 30px var(--accent-dim);">
             </div>
-        </header>
-
-        <div id="strategies">
-            <h2 class="section-title">Algorithmic Strategies &amp; Code</h2>
-            <div class="grid">
-
-                <a href="https://github.com/rishisubedi/Deep-Learning-Demand-Prediction" class="card">
-                    <div class="card-title">
-                        Deep Learning Demand Prediction
-                        <span style="font-size: 0.7rem; background: rgba(0, 242, 96, 0.1); color: var(--accent); padding: 3px 8px; border-radius: 4px; font-weight: 600;">VERIFIED</span>
-                    </div>
-                    <div class="card-desc">
-                        Constructed a custom Neural Network to forecast chaotic time-series data.
-                        <br><br>
-                        <strong style="color: #fff;">Key Tech:</strong> NumPy, Pandas, Matplotlib<br>
-                        <strong style="color: #fff;">Application:</strong> Demand Modeling, Volatility Forecasting
-                    </div>
-                    <div class="card-meta">
-                        <span class="language-dot lang-python"></span> Python
-                        <div class="stars"><i class="fas fa-star"></i> 4</div>
-                    </div>
-                </a>
-
-                <a href="https://github.com/rishisubedi/Market-Sentiment-Analysis" class="card">
-                    <div class="card-title">Market Sentiment Analysis</div>
-                    <div class="card-desc">
-                        Natural Language Processing (NLP) pipeline correlating social sentiment polarity with equity
-                        market movements.
-                        <br><br>
-                        <strong style="color: #fff;">Architecture:</strong> LSTM / Transformer<br>
-                        <strong style="color: #fff;">Alpha Signal:</strong> Sentiment-Volatility correlation
-                    </div>
-                    <div class="card-meta">
-                        <span class="language-dot lang-python"></span> Python
-                        <div class="stars"><i class="fas fa-star"></i> 1</div>
-                    </div>
-                </a>
-
-                <a href="https://github.com/rishisubedi/Dog-Breed-Classifier" class="card">
-                    <div class="card-title">Computer Vision Classifier</div>
-                    <div class="card-desc">
-                        High-precision CNN trained on ImageNet. Demonstrates mastery of identifying patterns in
-                        high-dimensional unstructured data.
-                    </div>
-                    <div class="card-meta">
-                        <span class="language-dot lang-python"></span> Python
-                        <div class="stars"><i class="fas fa-star"></i> 1</div>
-                    </div>
-                </a>
-
-                <a href="https://github.com/rishisubedi/Predicting-Online-news-popularity-using-ML-algos-in-R" class="card">
-                    <div class="card-title">News Popularity Predictor</div>
-                    <div class="card-desc">
-                        Statistical arbitrage approach to viral content prediction using comparative ML algorithms in R.
-                    </div>
-                    <div class="card-meta">
-                        <span class="language-dot lang-r"></span> R
-                        <div class="stars"><i class="fas fa-star"></i> 0</div>
-                    </div>
-                </a>
-
+            <h1>Hi, I'm Rishi Subedi<br><span>Quantitative Researcher</span></h1>
+            <div class="hero-subtitle">Specializing in <span id="typewriter" style="color: #fff;"></span></div>
+            <div>
+                <a href="#projects" class="btn">View Research</a>
+                <a href="mailto:rishisubedi@example.com" class="btn btn-outline">Get in Touch</a>
             </div>
         </div>
+    </section>
 
-        <div id="research" style="margin-top: 80px;">
-            <h2 class="section-title">Research Notes</h2>
-            <div style="background: var(--card-bg); padding: 40px; border-radius: 12px; border: 1px dashed rgba(255,255,255,0.1); text-align: center;">
-                <i class="fas fa-book-open" style="font-size: 2.5rem; color: var(--text-secondary); margin-bottom: 20px;"></i>
-                <h3 style="color: #fff; margin-bottom: 10px; font-size: 1.4rem;">Upcoming Publications</h3>
-                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 1.05rem;">
-                    I am currently compiling research on <em>"Optimizing LSTM Hyperparameters for High-Frequency Trading
-                        signals."</em>
-                    <br><br>
-                    <span style="font-size: 0.9rem; opacity: 0.7;">Check back soon for whitepapers and technical
-                        notes.</span>
-                </p>
+    <section id="experience" class="container">
+        <div class="section-header">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Oct 2027 (Expected)</div>
+                <div class="timeline-role">Computer Science Student</div>
+                <div class="timeline-org">University of Hertfordshire</div>
+                <div class="timeline-desc">Specializing in AI and Data Science. Conducting research on compliance & fraud detection algorithms for financial markets.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">Present</div>
+                <div class="timeline-role">Part-Time Associate</div>
+                <div class="timeline-org">Amazon</div>
+                <div class="timeline-desc">Gaining operational insights in a high-scale logistics environment while pursuing academic research.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">2027</div>
+                <div class="timeline-role">PhD Aspirant</div>
+                <div class="timeline-org">Artificial Intelligence & Quantitative Finance</div>
+                <div class="timeline-desc">Actively preparing for doctoral research focused on deep learning applications in volatility forecasting.</div>
             </div>
         </div>
+    </section>
 
-        <footer>
-            © 2026 Rishi Subedi. Built for the Intersection of AI &amp; Finance.
-        </footer>
-    </div>
+    <section id="projects" class="container">
+        <div class="section-header">
+            <h2 class="section-title">Selected Research</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="grid">
+            <div class="card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="card-top">
+                    <i class="far fa-folder folder-icon"></i>
+                    <div class="card-links">
+                        <a href="https://github.com/rishisubedi/Deep-Learning-Demand-Prediction" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="card-title">Deep Learning Demand Prediction</div>
+                <div class="card-desc">Neural Network architecture designed to forecast complex time-series demand patterns with high variability.</div>
+                <div class="card-tags"><span>Python</span><span>PyTorch</span><span>Pandas</span><span>Forecasting</span></div>
+            </div>
+            <div class="card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="card-top">
+                    <i class="far fa-chart-bar folder-icon"></i>
+                    <div class="card-links">
+                        <a href="https://github.com/rishisubedi/Market-Sentiment-Analysis" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="card-title">Market Sentiment Analysis</div>
+                <div class="card-desc">NLP-driven volatility predictor correlating social media sentiment polarity with equity market movements.</div>
+                <div class="card-tags"><span>Python</span><span>NLP</span><span>LSTM</span><span>Finance</span></div>
+            </div>
+            <div class="card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="card-top">
+                    <i class="far fa-eye folder-icon"></i>
+                    <div class="card-links">
+                        <a href="https://github.com/rishisubedi/Dog-Breed-Classifier" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="card-title">Computer Vision Classifier</div>
+                <div class="card-desc">High-precision Convolutional Neural Network (CNN) trained on ImageNet for identifying fine-grained patterns.</div>
+                <div class="card-tags"><span>Python</span><span>CNN</span><span>Transfer Learning</span></div>
+            </div>
+        </div>
+    </section>
 
+    <footer>
+        <div class="container">
+            <p>© 2026 Rishi Subedi. Built with <i class="fas fa-code" style="color: var(--accent);"></i> and Neural Networks.</p>
+        </div>
+    </footer>
 
+    <script>
+        ScrollReveal().reveal('.hero-content', { delay: 200, distance: '30px', origin: 'bottom' });
+        ScrollReveal().reveal('.section-header', { delay: 200, distance: '20px', origin: 'left' });
+        ScrollReveal().reveal('.timeline-item', { delay: 300, distance: '20px', origin: 'left', interval: 200 });
+        ScrollReveal().reveal('.card', { delay: 300, distance: '30px', origin: 'bottom', interval: 150 });
 
-</body></html>
+        const text = ["Financial Machine Learning", "Algorithmic Strategies", "Deep Learning Architectures"];
+        let count = 0, index = 0, currentText = "", letter = "";
+        (function type() {
+            if (count === text.length) count = 0;
+            currentText = text[count];
+            letter = currentText.slice(0, ++index);
+            document.getElementById("typewriter").textContent = letter;
+            if (letter.length === currentText.length) { count++; index = 0; setTimeout(type, 2000); }
+            else { setTimeout(type, 100); }
+        })();
+
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particlesArray;
+        class Particle {
+            constructor(x, y, opacity) {
+                this.x = x; this.y = y; this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5; this.speedY = Math.random() * 1 - 0.5;
+                this.opacity = opacity;
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x > canvas.width || this.x < 0) this.speedX = -this.speedX;
+                if (this.y > canvas.height || this.y < 0) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = "rgba(0, 242, 96, " + this.opacity + ")";
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+        function init() {
+            particlesArray = [];
+            let numberOfParticles = (canvas.width * canvas.height) / 15000;
+            for (let i = 0; i < numberOfParticles; i++) {
+                let x = Math.random() * canvas.width, y = Math.random() * canvas.height, opacity = Math.random() * 0.5;
+                particlesArray.push(new Particle(x, y, opacity));
+            }
+        }
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update(); particlesArray[i].draw();
+                for (let j = i; j < particlesArray.length; j++) {
+                    const dx = particlesArray[i].x - particlesArray[j].x, dy = particlesArray[i].y - particlesArray[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 100) {
+                        ctx.beginPath(); ctx.strokeStyle = "rgba(0, 242, 96, " + (0.1 - distance / 1000) + ")";
+                        ctx.lineWidth = 1; ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                        ctx.lineTo(particlesArray[j].x, particlesArray[j].y); ctx.stroke();
+                    }
+                }
+            }
+        }
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; init(); });
+        init(); animate();
+    </script>
+</body>
+</html>
