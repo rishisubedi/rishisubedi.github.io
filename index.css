@@ -81,3 +81,50 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #334155;
 }
+
+/* --- Advanced Animations & Software Principles --- */
+/* Hardware acceleration for animations */
+.hardware-accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+/* Custom Magnetic Cursor */
+body {
+    cursor: none; /* Hide default cursor */
+}
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #10b981; /* tech-emerald */
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                height 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                background-color 0.3s ease;
+    will-change: transform;
+}
+
+.custom-cursor.hover {
+    width: 60px;
+    height: 60px;
+    background-color: #0ea5e9; /* tech-blue */
+}
+
+/* Respect user preferences for motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+

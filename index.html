@@ -40,57 +40,66 @@
     <!-- Animation Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <!-- tsParticles for High-Performance Background Animations -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
 </head>
 
 <body class="bg-slate-950 text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-tech-blue selection:text-white relative">
 
+    <!-- Custom Magnetic Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+
     <!-- Thematic Backgrounds -->
-    <div class="fixed inset-0 z-[-2] bg-slate-950"></div>
-    <div class="fixed inset-0 z-[-1] opacity-20 pointer-events-none topo-bg"></div>
-    <div class="fixed bottom-0 w-full h-[40vh] z-[-1] opacity-10 pointer-events-none london-skyline"></div>
+    <div class="fixed inset-0 z-[-2] bg-slate-950 hardware-accelerated"></div>
+    <div class="fixed inset-0 z-[-1] opacity-20 pointer-events-none topo-bg hardware-accelerated"></div>
+    <div class="fixed bottom-0 w-full h-[40vh] z-[-1] opacity-10 pointer-events-none london-skyline hardware-accelerated"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-slate-950/70 border-b border-slate-800" id="navbar">
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-slate-950/70 border-b border-slate-800 hardware-accelerated" id="navbar">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#hero" class="font-serif text-2xl font-bold tracking-widest text-white hover:scale-105 transition-transform">RISHI<span class="text-tech-emerald">.</span></a>
+            <a href="#hero" class="font-serif text-2xl font-bold tracking-widest text-white hover:scale-105 transition-transform magnetic-link">RISHI<span class="text-tech-emerald">.</span></a>
             <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide nav-links">
-                <a href="#about" class="nav-item hover:text-white transition-colors relative pb-1">About</a>
-                <a href="#philosophy" class="nav-item hover:text-white transition-colors relative pb-1">Philosophy</a>
-                <a href="#projects" class="nav-item hover:text-white transition-colors relative pb-1">Software Development</a>
-                <a href="#contact" class="px-4 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all text-white">Hire Me</a>
+                <a href="#about" class="nav-item hover:text-white transition-colors relative pb-1 magnetic-link">About</a>
+                <a href="#philosophy" class="nav-item hover:text-white transition-colors relative pb-1 magnetic-link">Philosophy</a>
+                <a href="#projects" class="nav-item hover:text-white transition-colors relative pb-1 magnetic-link">Software Development</a>
+                <a href="#contact" class="px-4 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all text-white magnetic-link">Hire Me</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 pt-20">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950 z-0"></div>
+    <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
+        <!-- Interactive Particle Network -->
+        <div id="tsparticles" class="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-auto"></div>
+        
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950 z-0 pointer-events-none"></div>
+        
         <div class="max-w-5xl mx-auto text-center relative z-10 reveal-hero">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 backdrop-blur-sm mb-8 hover:bg-slate-700 transition-colors cursor-default">
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 backdrop-blur-sm mb-8 transition-colors cursor-default">
                 <span class="w-2 h-2 rounded-full bg-tech-emerald animate-pulse"></span>
-                <span class="text-xs uppercase tracking-wider font-semibold text-slate-200">Seeking 2027/2028 Grad Schemes (Quant/AI) in London</span>
+                <span class="text-xs uppercase tracking-wider font-semibold text-slate-200" id="scramble-target">Seeking 2027/2028 Grad Schemes (Quant/AI) in London</span>
             </div>
             
             <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
                 Engineering <span class="bg-clip-text text-transparent bg-gradient-to-r from-tech-blue to-tech-emerald">Trust</span> in <br/> Algorithmic Finance
             </h1>
             
-            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed scramble-text">
                 I am an AI Governance Researcher and Quantitative Engineer. I build highly scalable, regulatory-compliant SaaS platforms bridging the gap between cutting-edge LLMs and strict Tier-1 banking regulations.
             </p>
             
             <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="#projects" class="px-8 py-4 bg-white text-slate-950 font-bold rounded-sm hover:bg-slate-200 hover:scale-105 transition-all uppercase tracking-wider text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                <a href="#projects" class="px-8 py-4 bg-white text-slate-950 font-bold rounded-sm hover:bg-slate-200 transition-all uppercase tracking-wider text-sm shadow-[0_0_20px_rgba(255,255,255,0.3)] magnetic-link hover-scale">
                     Explore Software
                 </a>
-                <a href="https://github.com/rishisubedi" target="_blank" class="px-8 py-4 border border-slate-700 text-white font-semibold rounded-sm hover:bg-slate-800 hover:scale-105 transition-all uppercase tracking-wider text-sm flex items-center gap-3">
+                <a href="https://github.com/rishisubedi" target="_blank" class="px-8 py-4 border border-slate-700 text-white font-semibold rounded-sm hover:bg-slate-800 transition-all uppercase tracking-wider text-sm flex items-center gap-3 magnetic-link hover-scale">
                     <i class="fab fa-github text-lg"></i> GitHub
                 </a>
             </div>
         </div>
         
         <!-- Scroll indicator -->
-        <a href="#philosophy" class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500 hover:text-white transition-colors">
+        <a href="#philosophy" class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500 hover:text-white transition-colors magnetic-link">
             <i class="fas fa-chevron-down text-2xl"></i>
         </a>
     </section>
@@ -100,7 +109,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <!-- Nepal Card -->
-                <div class="glass-card p-8 reveal-card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="glass-card p-8 reveal-card magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                     <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mb-6 border border-slate-700 transition-transform duration-300 hover:scale-110 hover:rotate-3">
                         <i class="fa-solid fa-mountain text-tech-emerald text-xl"></i>
                     </div>
@@ -111,7 +120,7 @@
                 </div>
 
                 <!-- AI/Fintech Card -->
-                <div class="glass-card p-8 reveal-card delay-100" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="glass-card p-8 reveal-card delay-100 magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                     <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mb-6 border border-slate-700 transition-transform duration-300 hover:scale-110 hover:rotate-3">
                         <i class="fa-solid fa-network-wired text-tech-blue text-xl"></i>
                     </div>
@@ -122,7 +131,7 @@
                 </div>
 
                 <!-- London Card -->
-                <div class="glass-card p-8 reveal-card delay-200" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="glass-card p-8 reveal-card delay-200 magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
                     <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mb-6 border border-slate-700 transition-transform duration-300 hover:scale-110 hover:-rotate-3">
                         <i class="fa-solid fa-building-columns text-white text-xl"></i>
                     </div>
@@ -138,7 +147,7 @@
     <!-- Projects / Engineering -->
     <section id="projects" class="py-32 relative z-10 scroll-mt-10">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="font-serif text-4xl md:text-5xl text-white mb-4 reveal-up">Software Development</h2>
+            <h2 class="font-serif text-4xl md:text-5xl text-white mb-4 reveal-up scramble-text-on-scroll">Software Development</h2>
             <div class="w-20 h-1 bg-tech-blue mb-20 reveal-up"></div>
 
             <div class="space-y-32">
@@ -148,23 +157,23 @@
                     <div class="order-2 lg:order-1 relative z-10">
                         <div class="text-tech-emerald text-sm font-bold tracking-widest uppercase mb-2">B2B SaaS / Fintech</div>
                         <h3 class="font-serif text-3xl text-white mb-6">flow-score</h3>
-                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-mr-12 relative z-20">
+                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-mr-12 relative z-20 hover:border-tech-emerald/30 transition-colors">
                             FlowScore API, a "Thin-File" Open Banking Credit Underwriter designed for gig-economy workers and immigrants, strictly complying with UK FCA Consumer Duty regulations. Built with enterprise-grade architecture for Tier-1 financial institutions.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-8 relative z-20">
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Python</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">FastAPI</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">LangGraph</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Celery / Redis</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">PostgreSQL</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">FastAPI</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">LangGraph</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Celery / Redis</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">PostgreSQL</span>
                         </div>
-                        <a href="https://github.com/rishisubedi/flow-score" target="_blank" class="text-white font-semibold hover:text-tech-blue transition-colors flex items-center gap-2 group">
+                        <a href="https://github.com/rishisubedi/flow-score" target="_blank" class="text-white font-semibold hover:text-tech-blue transition-colors flex items-center gap-2 group magnetic-link">
                             View Source on GitHub <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
                         </a>
                     </div>
                     <div class="order-1 lg:order-2 glass-card overflow-hidden group">
                         <div class="aspect-video relative overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Data Analytics and Dashboard representing FlowScore API" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Data Analytics and Dashboard representing FlowScore API" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 hardware-accelerated">
                             <div class="absolute inset-0 bg-gradient-to-tr from-tech-blue/40 to-transparent mix-blend-overlay"></div>
                         </div>
                     </div>
@@ -174,22 +183,22 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-project">
                     <div class="glass-card overflow-hidden group">
                         <div class="aspect-video relative overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop" alt="Digital network routing representing SHIRE" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop" alt="Digital network routing representing SHIRE" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 hardware-accelerated">
                             <div class="absolute inset-0 bg-gradient-to-tr from-tech-emerald/40 to-transparent mix-blend-overlay"></div>
                         </div>
                     </div>
                     <div class="relative z-10">
                         <div class="text-tech-blue text-sm font-bold tracking-widest uppercase mb-2 text-right">LLM Routing Architecture</div>
                         <h3 class="font-serif text-3xl text-white mb-6 text-right">shire</h3>
-                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-ml-12 relative z-20 text-right">
+                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-ml-12 relative z-20 text-right hover:border-tech-blue/30 transition-colors">
                             SHIRE - Secure High-Intelligence Routing Engine. Engineered to optimize request routing and payload management across decentralized node architectures, ensuring security and low-latency intelligence delivery.
                         </p>
                         <div class="flex flex-wrap justify-end gap-2 mb-8 relative z-20">
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Python</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Distributed Systems</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Networking</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Distributed Systems</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Networking</span>
                         </div>
-                        <a href="https://github.com/rishisubedi/shire" target="_blank" class="text-white font-semibold hover:text-tech-emerald transition-colors flex items-center justify-end gap-2 group">
+                        <a href="https://github.com/rishisubedi/shire" target="_blank" class="text-white font-semibold hover:text-tech-emerald transition-colors flex items-center justify-end gap-2 group magnetic-link">
                             <i class="fa-solid fa-arrow-left transform group-hover:-translate-x-2 transition-transform"></i> View Source on GitHub
                         </a>
                     </div>
@@ -200,22 +209,22 @@
                     <div class="order-2 lg:order-1 relative z-10">
                         <div class="text-tech-emerald text-sm font-bold tracking-widest uppercase mb-2">Security & Machine Learning</div>
                         <h3 class="font-serif text-3xl text-white mb-6">APP-fraud-detection</h3>
-                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-mr-12 relative z-20">
+                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-mr-12 relative z-20 hover:border-rose-500/30 transition-colors">
                             A real-time transaction monitoring system that flags out-of-character transfers before the money leaves the account. Designed to combat Authorized Push Payment (APP) fraud in modern banking systems.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-8 relative z-20">
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Python</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Machine Learning</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Real-Time Data</span>
-                            <span class="tech-badge hover:-translate-y-1 transition-transform">Anomaly Detection</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Machine Learning</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Real-Time Data</span>
+                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Anomaly Detection</span>
                         </div>
-                        <a href="https://github.com/rishisubedi/APP-fraud-detection" target="_blank" class="text-white font-semibold hover:text-tech-blue transition-colors flex items-center gap-2 group">
+                        <a href="https://github.com/rishisubedi/APP-fraud-detection" target="_blank" class="text-white font-semibold hover:text-tech-blue transition-colors flex items-center gap-2 group magnetic-link">
                             View Source on GitHub <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
                         </a>
                     </div>
                     <div class="order-1 lg:order-2 glass-card overflow-hidden group">
                         <div class="aspect-video relative overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200&auto=format&fit=crop" alt="Financial charts and lock representing fraud detection" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200&auto=format&fit=crop" alt="Financial charts and lock representing fraud detection" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 hardware-accelerated">
                             <div class="absolute inset-0 bg-gradient-to-tr from-rose-500/30 to-transparent mix-blend-overlay"></div>
                         </div>
                     </div>
@@ -229,17 +238,17 @@
     <footer id="contact" class="border-t border-slate-800 bg-slate-950 py-12 relative z-10">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0">
-                <a href="#hero" class="font-serif text-2xl font-bold tracking-widest text-white hover:text-tech-blue transition-colors">RISHI<span class="text-tech-emerald">.</span></a>
+                <a href="#hero" class="font-serif text-2xl font-bold tracking-widest text-white hover:text-tech-blue transition-colors magnetic-link">RISHI<span class="text-tech-emerald">.</span></a>
                 <p class="text-sm text-slate-500 mt-2">Bridging Himalayan Resilience with London Scale.</p>
             </div>
             <div class="flex space-x-6">
-                <a href="https://github.com/rishisubedi" target="_blank" class="text-slate-400 hover:text-white hover:scale-110 transition-all text-2xl">
+                <a href="https://github.com/rishisubedi" target="_blank" class="text-slate-400 hover:text-white hover:scale-110 transition-all text-2xl magnetic-link">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/rishiram435/" target="_blank" class="text-slate-400 hover:text-tech-blue hover:scale-110 transition-all text-2xl">
+                <a href="https://www.linkedin.com/in/rishiram435/" target="_blank" class="text-slate-400 hover:text-tech-blue hover:scale-110 transition-all text-2xl magnetic-link">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="mailto:rishiram.subedi@gmail.com" class="text-slate-400 hover:text-tech-emerald hover:scale-110 transition-all text-2xl">
+                <a href="mailto:rishiram.subedi@gmail.com" class="text-slate-400 hover:text-tech-emerald hover:scale-110 transition-all text-2xl magnetic-link">
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
@@ -247,89 +256,176 @@
     </footer>
 
     <script>
-        // ScrollReveal Initialization with creative parallax/scale effects
-        ScrollReveal().reveal('.reveal-hero', { 
-            delay: 100, 
-            distance: '40px', 
-            origin: 'bottom', 
-            duration: 1200, 
-            opacity: 0,
-            scale: 0.95
-        });
-        
-        ScrollReveal().reveal('.reveal-up', { 
-            delay: 200, 
-            distance: '30px', 
-            origin: 'bottom', 
-            duration: 1000, 
-            interval: 200 
-        });
-        
-        ScrollReveal().reveal('.reveal-card', { 
-            delay: 200, 
-            distance: '50px', 
-            origin: 'bottom', 
-            duration: 1000,
-            interval: 150
+        // --- 1. Custom Magnetic Cursor Logic ---
+        const cursor = document.getElementById('custom-cursor');
+        const magneticLinks = document.querySelectorAll('.magnetic-link, a, button');
+
+        // Check if device supports hover (disables custom cursor on mobile to prevent bugs)
+        if (window.matchMedia("(any-hover: hover)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                // Hardware accelerated cursor movement via requestAnimationFrame
+                window.requestAnimationFrame(() => {
+                    cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+                });
+            });
+
+            magneticLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                link.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        } else {
+            cursor.style.display = 'none'; // Hide on mobile
+        }
+
+        // --- 2. Interactive tsParticles (Network Node Effect) ---
+        tsParticles.load("tsparticles", {
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "grab" },
+                    resize: true,
+                },
+                modes: {
+                    grab: { distance: 140, links: { opacity: 1 } },
+                },
+            },
+            particles: {
+                color: { value: "#10b981" },
+                links: {
+                    color: "#0ea5e9",
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.2,
+                    width: 1,
+                },
+                move: {
+                    enable: true,
+                    speed: 0.8,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    outModes: { default: "bounce" },
+                },
+                number: { value: 60, density: { enable: true, area: 800 } },
+                opacity: { value: 0.5 },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 3 } },
+            },
+            detectRetina: true,
         });
 
-        // Creative Project Reveal: alternating sides
+        // --- 3. Text Scramble / Decrypt Animation ---
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar();
+                            this.queue[i].char = char;
+                        }
+                        output += `<span class="text-tech-blue opacity-70">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)];
+            }
+        }
+        
+        // Trigger scramble on load
+        const phrase = "Seeking 2027/2028 Grad Schemes (Quant/AI) in London";
+        const el = document.getElementById('scramble-target');
+        const fx = new TextScramble(el);
+        setTimeout(() => { fx.setText(phrase); }, 500);
+
+
+        // --- 4. ScrollReveal Initialization (Hardware Accelerated) ---
+        ScrollReveal().reveal('.reveal-hero', { 
+            delay: 100, distance: '40px', origin: 'bottom', duration: 1200, opacity: 0, scale: 0.95 
+        });
+        ScrollReveal().reveal('.reveal-up', { 
+            delay: 200, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 
+        });
+        ScrollReveal().reveal('.reveal-card', { 
+            delay: 200, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 
+        });
         ScrollReveal().reveal('.reveal-project:nth-child(odd)', { 
-            delay: 200, 
-            distance: '60px', 
-            origin: 'left', 
-            duration: 1200,
-            opacity: 0,
-            viewFactor: 0.2
+            delay: 200, distance: '60px', origin: 'left', duration: 1200, opacity: 0, viewFactor: 0.2 
         });
         ScrollReveal().reveal('.reveal-project:nth-child(even)', { 
-            delay: 200, 
-            distance: '60px', 
-            origin: 'right', 
-            duration: 1200,
-            opacity: 0,
-            viewFactor: 0.2
+            delay: 200, distance: '60px', origin: 'right', duration: 1200, opacity: 0, viewFactor: 0.2 
         });
 
-        // Navbar blur and active state tracking
+        // --- 5. Navbar blur and ScrollSpy ---
         const nav = document.getElementById('navbar');
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-item');
 
         window.addEventListener('scroll', () => {
-            // Navbar styling
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-lg', 'shadow-black/20', 'bg-slate-950/90');
-                nav.classList.remove('bg-slate-950/70');
-            } else {
-                nav.classList.remove('shadow-lg', 'shadow-black/20', 'bg-slate-950/90');
-                nav.classList.add('bg-slate-950/70');
-            }
-
-            // ScrollSpy active link highlighting
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('text-tech-emerald', 'font-bold');
-                link.classList.add('text-slate-300');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('text-tech-emerald', 'font-bold');
-                    link.classList.remove('text-slate-300');
-                    
-                    // Add subtle active indicator dot via CSS class
-                    link.classList.add('after:absolute', 'after:bottom-0', 'after:left-1/2', 'after:-translate-x-1/2', 'after:w-1', 'after:h-1', 'after:bg-tech-emerald', 'after:rounded-full');
+            // Hardware accelerated sticky nav shadow
+            window.requestAnimationFrame(() => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('shadow-lg', 'shadow-black/20', 'bg-slate-950/90');
+                    nav.classList.remove('bg-slate-950/70');
                 } else {
-                    link.classList.remove('after:absolute', 'after:bottom-0', 'after:left-1/2', 'after:-translate-x-1/2', 'after:w-1', 'after:h-1', 'after:bg-tech-emerald', 'after:rounded-full');
+                    nav.classList.remove('shadow-lg', 'shadow-black/20', 'bg-slate-950/90');
+                    nav.classList.add('bg-slate-950/70');
                 }
+
+                let current = '';
+                sections.forEach(section => {
+                    if (pageYOffset >= (section.offsetTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-tech-emerald', 'font-bold', 'after:absolute', 'after:bottom-0', 'after:left-1/2', 'after:-translate-x-1/2', 'after:w-1', 'after:h-1', 'after:bg-tech-emerald', 'after:rounded-full');
+                    link.classList.add('text-slate-300');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('text-tech-emerald', 'font-bold', 'after:absolute', 'after:bottom-0', 'after:left-1/2', 'after:-translate-x-1/2', 'after:w-1', 'after:h-1', 'after:bg-tech-emerald', 'after:rounded-full');
+                        link.classList.remove('text-slate-300');
+                    }
+                });
             });
-        });
+        }, { passive: true }); // passive listener for scroll performance
     </script>
 </body>
 </html>
