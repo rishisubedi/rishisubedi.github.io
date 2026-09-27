@@ -131,37 +131,56 @@ body {
 /* --- Premium Banking "Titanium Card" Aesthetic --- */
 .titanium-card {
     background: linear-gradient(135deg, #1e222a 0%, #121418 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     box-shadow: 
-        inset 0 1px 0 rgba(255,255,255,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.05),
         0 20px 40px rgba(0,0,0,0.5),
         0 1px 3px rgba(0,0,0,0.3);
     position: relative;
     overflow: hidden;
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+    /* Ultra-smooth Apple-like ease transition */
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s ease;
 }
 
+/* The Spotlight Glow Effect (Dynamic Mouse Tracking) */
 .titanium-card::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0; left: -100%;
-    width: 50%; height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
-    transform: skewX(-20deg);
-    transition: left 0.7s ease;
-}
-
-.titanium-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 
-        inset 0 1px 0 rgba(255,255,255,0.2),
-        0 30px 50px rgba(0,0,0,0.6),
-        0 0 20px rgba(16, 185, 129, 0.1);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    /* The variables --mouse-x and --mouse-y are injected via JS */
+    background: radial-gradient(
+        600px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
+        var(--card-glow-color, rgba(255, 255, 255, 0.08)),
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    z-index: 0;
 }
 
 .titanium-card:hover::before {
-    left: 200%;
+    opacity: 1;
+}
+
+/* Inner content must sit above the spotlight */
+.titanium-card > * {
+    position: relative;
+    z-index: 10;
+}
+
+.titanium-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        0 30px 60px rgba(0,0,0,0.7),
+        0 0 30px var(--card-glow-color, rgba(16, 185, 129, 0.1));
 }
 
 .chip-gradient {
