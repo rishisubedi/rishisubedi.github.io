@@ -5,30 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rishi Subedi | AI Governance & Quant Engineer</title>
     
-    <!-- Fonts: Cinzel for London architectural feel, Inter for clean tech readability -->
+    <!-- PERFORMANCE: Preconnect to critical domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (Deferred config) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Cinzel', 'serif'],
-                    },
-                    colors: {
-                        slate: {
-                            850: '#151e2e',
-                            950: '#0a0f18',
-                        },
-                        tech: {
-                            blue: '#0ea5e9',
-                            emerald: '#10b981',
-                        }
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Cinzel', 'serif'] },
+                    colors: { slate: { 850: '#151e2e', 950: '#0a0f18' }, tech: { blue: '#0ea5e9', emerald: '#10b981' } }
                 }
             }
         }
@@ -37,14 +30,39 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="index.css">
     
-    <!-- Animation Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <!-- tsParticles for High-Performance Background Animations -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+    <!-- PERFORMANCE: Defer non-critical rendering scripts -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/scrollreveal/4.0.9/scrollreveal.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js"></script>
+
+    <!-- UI/UX: Skeleton Loading Styles for Server/Render Cost Mitigation -->
+    <style>
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+        }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        #page-preloader {
+            transition: opacity 0.5s ease-out, visibility 0.5s;
+        }
+    </style>
 </head>
 
 <body class="bg-slate-950 text-slate-300 font-sans antialiased overflow-x-hidden selection:bg-tech-blue selection:text-white relative">
+
+    <!-- UI/UX: Page Preloader to mask Bundle/Render Cost FOUC -->
+    <div id="page-preloader" class="fixed inset-0 z-[99999] bg-slate-950 flex flex-col items-center justify-center">
+        <i class="fa-solid fa-microchip text-4xl text-tech-emerald animate-pulse mb-4"></i>
+        <div class="h-1 w-48 bg-slate-800 rounded overflow-hidden">
+            <div class="h-full bg-tech-emerald animate-[progress_1s_ease-in-out_infinite]"></div>
+        </div>
+        <p class="text-xs text-slate-500 mt-4 uppercase tracking-widest">Initializing Architecture...</p>
+    </div>
 
     <!-- Custom Magnetic Cursor -->
     <div class="custom-cursor" id="custom-cursor"></div>
@@ -60,6 +78,7 @@
             <a href="#hero" class="font-serif text-2xl font-bold tracking-widest text-white hover:scale-105 transition-transform magnetic-link">RISHI<span class="text-tech-emerald">.</span></a>
             <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide nav-links">
                 <a href="#about" class="nav-item hover:text-white transition-colors relative pb-1 magnetic-link">About</a>
+                <a href="#analytics" class="nav-item hover:text-white transition-colors relative pb-1 magnetic-link">Live Analytics</a>
                 <a href="#philosophy" class="nav-item hover:text-white transition-colors relative pb-1 magnetic-link">Philosophy</a>
                 <a href="#projects" class="nav-item hover:text-white transition-colors relative pb-1 magnetic-link">Software Development</a>
                 <a href="#contact" class="px-4 py-2 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 transition-all text-white magnetic-link">Hire Me</a>
@@ -69,9 +88,7 @@
 
     <!-- Hero Section -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
-        <!-- Interactive Particle Network -->
         <div id="tsparticles" class="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-auto"></div>
-        
         <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-950 z-0 pointer-events-none"></div>
         
         <div class="max-w-5xl mx-auto text-center relative z-10 reveal-hero">
@@ -98,46 +115,76 @@
             </div>
         </div>
         
-        <!-- Scroll indicator -->
-        <a href="#philosophy" class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500 hover:text-white transition-colors magnetic-link">
+        <a href="#analytics" class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-slate-500 hover:text-white transition-colors magnetic-link">
             <i class="fas fa-chevron-down text-2xl"></i>
         </a>
     </section>
 
+    <!-- UI/UX: Eager Loading Analytics Panel (Simulating Server Cost vs Render Cost) -->
+    <section id="analytics" class="py-16 relative z-10 bg-slate-950/80 border-y border-slate-800 backdrop-blur-md scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="font-serif text-2xl text-white">Live Queue Analytics</h2>
+                <div class="text-xs text-slate-400 bg-slate-900 px-3 py-1 rounded border border-slate-700 flex items-center gap-2">
+                    <span id="api-status-dot" class="w-2 h-2 rounded-full bg-rose-500"></span> API Status: <span id="api-status-text">Fetching...</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6" id="analytics-panel">
+                <!-- Skeleton UI (Render Cost Mitigation) -->
+                <div class="bg-slate-900/50 p-6 rounded border border-slate-800">
+                    <div class="skeleton h-4 w-24 mb-4"></div>
+                    <div class="skeleton h-10 w-16 mb-2"></div>
+                    <div class="skeleton h-3 w-32"></div>
+                </div>
+                <div class="bg-slate-900/50 p-6 rounded border border-slate-800">
+                    <div class="skeleton h-4 w-24 mb-4"></div>
+                    <div class="skeleton h-10 w-16 mb-2"></div>
+                    <div class="skeleton h-3 w-32"></div>
+                </div>
+                <div class="bg-slate-900/50 p-6 rounded border border-slate-800">
+                    <div class="skeleton h-4 w-24 mb-4"></div>
+                    <div class="skeleton h-10 w-16 mb-2"></div>
+                    <div class="skeleton h-3 w-32"></div>
+                </div>
+                <div class="bg-slate-900/50 p-6 rounded border border-slate-800">
+                    <div class="skeleton h-4 w-24 mb-4"></div>
+                    <div class="skeleton h-10 w-16 mb-2"></div>
+                    <div class="skeleton h-3 w-32"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Thematic Philosophy Section -->
-    <section id="philosophy" class="py-24 relative z-10 bg-slate-900/50 border-y border-slate-800 backdrop-blur-sm scroll-mt-20">
+    <section id="philosophy" class="py-24 relative z-10 bg-slate-900/50 border-b border-slate-800 backdrop-blur-sm scroll-mt-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Nepal Card -->
-                <div class="glass-card p-8 reveal-card magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="glass-card p-8 reveal-card magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400">
                     <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mb-6 border border-slate-700 transition-transform duration-300 hover:scale-110 hover:rotate-3">
                         <i class="fa-solid fa-mountain text-tech-emerald text-xl"></i>
                     </div>
                     <h3 class="font-serif text-2xl text-white mb-4">Himalayan Resilience</h3>
                     <p class="text-sm text-slate-400 leading-relaxed">
-                        Born from the towering peaks of Nepal, my approach to engineering is grounded in resilience and adaptability. Just as mountaineers navigate extreme conditions, I build software designed to withstand catastrophic edge cases, adversarial AI inputs, and extreme market volatility.
+                        Born from the towering peaks of Nepal, my approach to engineering is grounded in resilience and adaptability.
                     </p>
                 </div>
-
-                <!-- AI/Fintech Card -->
-                <div class="glass-card p-8 reveal-card delay-100 magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="glass-card p-8 reveal-card delay-100 magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400">
                     <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mb-6 border border-slate-700 transition-transform duration-300 hover:scale-110 hover:rotate-3">
                         <i class="fa-solid fa-network-wired text-tech-blue text-xl"></i>
                     </div>
                     <h3 class="font-serif text-2xl text-white mb-4">Deterministic AI</h3>
                     <p class="text-sm text-slate-400 leading-relaxed">
-                        My true passion lies in taming LLMs for the Fintech industry. I utilize Neuro-symbolic architecture and Multi-Agent networks (LangGraph) to force non-deterministic models into strictly auditable, mathematically sound credit pipelines.
+                        My true passion lies in taming LLMs for the Fintech industry utilizing Neuro-symbolic architecture.
                     </p>
                 </div>
-
-                <!-- London Card -->
-                <div class="glass-card p-8 reveal-card delay-200 magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="glass-card p-8 reveal-card delay-200 magnetic-link" data-tilt data-tilt-max="5" data-tilt-speed="400">
                     <div class="w-12 h-12 rounded-lg bg-slate-800 flex items-center justify-center mb-6 border border-slate-700 transition-transform duration-300 hover:scale-110 hover:-rotate-3">
                         <i class="fa-solid fa-building-columns text-white text-xl"></i>
                     </div>
                     <h3 class="font-serif text-2xl text-white mb-4">London Precision</h3>
                     <p class="text-sm text-slate-400 leading-relaxed">
-                        Inspired by the structural precision of London's financial district, my codebases follow strict, enterprise-grade architecture. From Dockerized Celery workers to FCA Consumer Duty compliance layers, I engineer for Tier-1 scale.
+                        Inspired by the structural precision of London's financial district, my codebases follow strict, enterprise-grade architecture.
                     </p>
                 </div>
             </div>
@@ -154,7 +201,6 @@
                 
                 <!-- 1. FlowScore API Metal Card -->
                 <div class="titanium-card p-10 reveal-project" data-cursor-color="#10b981" style="--card-glow-color: rgba(16, 185, 129, 0.15);">
-                    <!-- Card Headers -->
                     <div class="flex justify-between items-start mb-8">
                         <i class="fa-solid fa-microchip chip-gradient text-5xl"></i>
                         <i class="fa-solid fa-wifi fa-rotate-90 text-slate-500 text-3xl"></i>
@@ -178,8 +224,10 @@
                         </div>
                         
                         <div class="flex flex-col justify-end items-end relative">
-                            <!-- Premium Background graphic for the card -->
-                            <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop')] bg-cover mix-blend-overlay rounded-lg grayscale"></div>
+                            <!-- PERFORMANCE: Replaced dimensionless CSS bg with a sized, lazy-loaded <img> tag to prevent CLS -->
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" 
+                                 width="600" height="400" loading="lazy" decoding="async" alt="FlowScore Analytics" 
+                                 class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay rounded-lg grayscale">
                             
                             <div class="relative z-10 w-full text-right mt-12 lg:mt-0">
                                 <div class="flex flex-wrap justify-end gap-2 mb-8">
@@ -211,17 +259,20 @@
                             <div class="space-y-6 mt-8">
                                 <div class="bg-slate-950/50 p-4 rounded border border-rose-900/30">
                                     <h4 class="text-rose-400 font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>The Problem</h4>
-                                    <p class="text-slate-400 text-sm leading-relaxed">As financial institutions deploy multiple LLMs (OpenAI, Gemini, Local Models), routing sensitive financial prompts creates massive latency bottlenecks, payload bloat, and severe data security vulnerabilities.</p>
+                                    <p class="text-slate-400 text-sm leading-relaxed">As financial institutions deploy multiple LLMs, routing sensitive financial prompts creates massive latency bottlenecks, payload bloat, and severe data security vulnerabilities.</p>
                                 </div>
                                 <div class="bg-slate-950/50 p-4 rounded border border-tech-blue/30">
                                     <h4 class="text-tech-blue font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-check-double mr-2"></i>The Solution</h4>
-                                    <p class="text-slate-300 text-sm leading-relaxed">Secure High-Intelligence Routing Engine (SHIRE). A decentralized edge-routing architecture that intelligently load-balances LLM requests, ensuring military-grade payload encryption and low-latency intelligence delivery.</p>
+                                    <p class="text-slate-300 text-sm leading-relaxed">Secure High-Intelligence Routing Engine (SHIRE). A decentralized edge-routing architecture that intelligently load-balances LLM requests, ensuring military-grade payload encryption.</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="flex flex-col justify-end items-end relative">
-                            <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop')] bg-cover mix-blend-overlay rounded-lg grayscale"></div>
+                            <!-- PERFORMANCE: Replaced dimensionless CSS bg with a sized, lazy-loaded <img> tag to prevent CLS -->
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" 
+                                 width="600" height="400" loading="lazy" decoding="async" alt="SHIRE Networking" 
+                                 class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay rounded-lg grayscale">
                             
                             <div class="relative z-10 w-full text-right mt-12 lg:mt-0">
                                 <div class="flex flex-wrap justify-end gap-2 mb-8">
@@ -252,17 +303,20 @@
                             <div class="space-y-6 mt-8">
                                 <div class="bg-slate-950/50 p-4 rounded border border-rose-900/30">
                                     <h4 class="text-rose-400 font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>The Problem</h4>
-                                    <p class="text-slate-400 text-sm leading-relaxed">Authorized Push Payment (APP) fraud costs banks billions annually. Traditional rule-based systems flag transactions post-execution, meaning the stolen funds have already left the victim's account permanently.</p>
+                                    <p class="text-slate-400 text-sm leading-relaxed">Authorized Push Payment (APP) fraud costs banks billions annually. Traditional rule-based systems flag transactions post-execution, meaning the stolen funds have already left the account.</p>
                                 </div>
                                 <div class="bg-slate-950/50 p-4 rounded border border-rose-500/30">
                                     <h4 class="text-rose-500 font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-check-double mr-2"></i>The Solution</h4>
-                                    <p class="text-slate-300 text-sm leading-relaxed">A real-time Machine Learning anomaly detection engine. It scores behavioral transaction deviations in milliseconds, identifying and freezing out-of-character transfers *before* the clearing cycle settles.</p>
+                                    <p class="text-slate-300 text-sm leading-relaxed">A real-time Machine Learning anomaly detection engine. It scores behavioral transaction deviations in milliseconds, identifying and freezing out-of-character transfers *before* settlement.</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="flex flex-col justify-end items-end relative">
-                            <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=600&auto=format&fit=crop')] bg-cover mix-blend-overlay rounded-lg grayscale"></div>
+                            <!-- PERFORMANCE: Replaced dimensionless CSS bg with a sized, lazy-loaded <img> tag to prevent CLS -->
+                            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=600&auto=format&fit=crop" 
+                                 width="600" height="400" loading="lazy" decoding="async" alt="APP Fraud Security" 
+                                 class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay rounded-lg grayscale">
                             
                             <div class="relative z-10 w-full text-right mt-12 lg:mt-0">
                                 <div class="flex flex-wrap justify-end gap-2 mb-8">
@@ -304,7 +358,54 @@
     </footer>
 
     <script>
-        // --- 1. Custom Magnetic Cursor & Spotlight Logic ---
+        // --- PERFORMANCE: Remove Preloader on window.load to mask FOUC/Bundle Cost ---
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('page-preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => { preloader.style.visibility = 'hidden'; }, 500);
+            }
+        });
+
+        // --- UI/UX: Mock "API Route" / Queue Analytics Data Fetch (Teaching Server vs Render Cost) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const analyticsPanel = document.getElementById('analytics-panel');
+            const statusDot = document.getElementById('api-status-dot');
+            const statusText = document.getElementById('api-status-text');
+
+            // Simulate server network request delay (1.5 seconds)
+            setTimeout(() => {
+                // Populate data (UI state transition from Skeleton to Content)
+                analyticsPanel.innerHTML = `
+                    <div class="bg-slate-900/80 p-6 rounded border border-slate-700 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                        <div class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-1">Queue Depth</div>
+                        <div class="text-3xl font-serif text-white mb-1">1,248</div>
+                        <div class="text-tech-emerald text-xs"><i class="fas fa-arrow-down mr-1"></i>Optimized Routing</div>
+                    </div>
+                    <div class="bg-slate-900/80 p-6 rounded border border-slate-700 shadow-[0_0_15px_rgba(14,165,233,0.1)]">
+                        <div class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-1">Avg Latency</div>
+                        <div class="text-3xl font-serif text-white mb-1">12ms</div>
+                        <div class="text-tech-blue text-xs"><i class="fas fa-bolt mr-1"></i>Edge Network</div>
+                    </div>
+                    <div class="bg-slate-900/80 p-6 rounded border border-slate-700 shadow-[0_0_15px_rgba(244,63,94,0.1)]">
+                        <div class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-1">Risk Scores Computed</div>
+                        <div class="text-3xl font-serif text-white mb-1">48.2K</div>
+                        <div class="text-rose-400 text-xs"><i class="fas fa-shield-halved mr-1"></i>Real-Time Models</div>
+                    </div>
+                    <div class="bg-slate-900/80 p-6 rounded border border-slate-700 shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+                        <div class="text-slate-400 text-xs font-bold tracking-widest uppercase mb-1">FCA Compliance Rate</div>
+                        <div class="text-3xl font-serif text-white mb-1">99.9%</div>
+                        <div class="text-slate-400 text-xs"><i class="fas fa-check-double mr-1"></i>Consumer Duty Active</div>
+                    </div>
+                `;
+                statusDot.classList.replace('bg-rose-500', 'bg-tech-emerald');
+                statusDot.classList.add('animate-pulse');
+                statusText.innerText = 'Online & Polling';
+                statusText.classList.add('text-tech-emerald');
+            }, 1500);
+        });
+
+        // --- Custom Magnetic Cursor & Spotlight Logic ---
         const cursor = document.getElementById('custom-cursor');
         const magneticLinks = document.querySelectorAll('.magnetic-link, a, button');
         const titaniumCards = document.querySelectorAll('.titanium-card');
@@ -322,7 +423,6 @@
             });
 
             titaniumCards.forEach(card => {
-                // Spotlight Logic
                 card.addEventListener('mousemove', e => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
@@ -331,59 +431,37 @@
                     card.style.setProperty('--mouse-y', `${y}px`);
                 });
 
-                // Smart Cursor Logic
                 card.addEventListener('mouseenter', () => {
                     const color = card.getAttribute('data-cursor-color');
-                    if(color) {
-                        cursor.style.backgroundColor = color;
-                    }
+                    if(color) cursor.style.backgroundColor = color;
                 });
                 card.addEventListener('mouseleave', () => {
-                    cursor.style.backgroundColor = '#10b981'; // Reset to tech-emerald
+                    cursor.style.backgroundColor = '#10b981';
                 });
             });
         } else {
-            cursor.style.display = 'none'; // Hide on mobile
+            cursor.style.display = 'none';
         }
 
-        // --- 2. Interactive tsParticles (Network Node Effect) ---
-        tsParticles.load("tsparticles", {
-            fpsLimit: 60,
-            interactivity: {
-                events: {
-                    onHover: { enable: true, mode: "grab" },
-                    resize: true,
+        // --- Interactive tsParticles (Network Node Effect) ---
+        if (typeof tsParticles !== 'undefined') {
+            tsParticles.load("tsparticles", {
+                fpsLimit: 60,
+                interactivity: { events: { onHover: { enable: true, mode: "grab" } }, modes: { grab: { distance: 140, links: { opacity: 1 } } } },
+                particles: {
+                    color: { value: "#10b981" },
+                    links: { color: "#0ea5e9", distance: 150, enable: true, opacity: 0.2, width: 1 },
+                    move: { enable: true, speed: 0.8, direction: "none", outModes: { default: "bounce" } },
+                    number: { value: 60, density: { enable: true, area: 800 } },
+                    opacity: { value: 0.5 },
+                    shape: { type: "circle" },
+                    size: { value: { min: 1, max: 3 } },
                 },
-                modes: {
-                    grab: { distance: 140, links: { opacity: 1 } },
-                },
-            },
-            particles: {
-                color: { value: "#10b981" },
-                links: {
-                    color: "#0ea5e9",
-                    distance: 150,
-                    enable: true,
-                    opacity: 0.2,
-                    width: 1,
-                },
-                move: {
-                    enable: true,
-                    speed: 0.8,
-                    direction: "none",
-                    random: false,
-                    straight: false,
-                    outModes: { default: "bounce" },
-                },
-                number: { value: 60, density: { enable: true, area: 800 } },
-                opacity: { value: 0.5 },
-                shape: { type: "circle" },
-                size: { value: { min: 1, max: 3 } },
-            },
-            detectRetina: true,
-        });
+                detectRetina: true,
+            });
+        }
 
-        // --- 3. Text Scramble / Decrypt Animation ---
+        // --- Text Scramble / Decrypt Animation ---
         class TextScramble {
             constructor(el) {
                 this.el = el;
@@ -438,37 +516,27 @@
             }
         }
         
-        // Trigger scramble on load
         const phrase = "Seeking 2027/2028 Grad Schemes (Quant/AI) in London";
-        const el = document.getElementById('scramble-target');
-        const fx = new TextScramble(el);
-        setTimeout(() => { fx.setText(phrase); }, 500);
+        const scrambleEl = document.getElementById('scramble-target');
+        if (scrambleEl) {
+            const fx = new TextScramble(scrambleEl);
+            setTimeout(() => { fx.setText(phrase); }, 500);
+        }
 
+        // --- ScrollReveal Initialization ---
+        if (typeof ScrollReveal !== 'undefined') {
+            ScrollReveal().reveal('.reveal-hero', { delay: 100, distance: '40px', origin: 'bottom', duration: 1200, opacity: 0, scale: 0.95 });
+            ScrollReveal().reveal('.reveal-up', { delay: 200, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 });
+            ScrollReveal().reveal('.reveal-card', { delay: 200, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 });
+            ScrollReveal().reveal('.reveal-project', { delay: 200, distance: '60px', origin: 'bottom', duration: 1200, opacity: 0, viewFactor: 0.2 });
+        }
 
-        // --- 4. ScrollReveal Initialization (Hardware Accelerated) ---
-        ScrollReveal().reveal('.reveal-hero', { 
-            delay: 100, distance: '40px', origin: 'bottom', duration: 1200, opacity: 0, scale: 0.95 
-        });
-        ScrollReveal().reveal('.reveal-up', { 
-            delay: 200, distance: '30px', origin: 'bottom', duration: 1000, interval: 200 
-        });
-        ScrollReveal().reveal('.reveal-card', { 
-            delay: 200, distance: '50px', origin: 'bottom', duration: 1000, interval: 150 
-        });
-        ScrollReveal().reveal('.reveal-project:nth-child(odd)', { 
-            delay: 200, distance: '60px', origin: 'left', duration: 1200, opacity: 0, viewFactor: 0.2 
-        });
-        ScrollReveal().reveal('.reveal-project:nth-child(even)', { 
-            delay: 200, distance: '60px', origin: 'right', duration: 1200, opacity: 0, viewFactor: 0.2 
-        });
-
-        // --- 5. Navbar blur and ScrollSpy ---
+        // --- Navbar blur and ScrollSpy ---
         const nav = document.getElementById('navbar');
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-item');
 
         window.addEventListener('scroll', () => {
-            // Hardware accelerated sticky nav shadow
             window.requestAnimationFrame(() => {
                 if (window.scrollY > 50) {
                     nav.classList.add('shadow-lg', 'shadow-black/20', 'bg-slate-950/90');
@@ -494,7 +562,7 @@
                     }
                 });
             });
-        }, { passive: true }); // passive listener for scroll performance
+        }, { passive: true });
     </script>
 </body>
 </html>
