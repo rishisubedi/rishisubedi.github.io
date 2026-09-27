@@ -150,82 +150,130 @@
             <h2 class="font-serif text-4xl md:text-5xl text-white mb-4 reveal-up scramble-text-on-scroll">Software Development</h2>
             <div class="w-20 h-1 bg-tech-blue mb-20 reveal-up"></div>
 
-            <div class="space-y-32">
+            <div class="space-y-24">
                 
-                <!-- 1. FlowScore API -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-project">
-                    <div class="order-2 lg:order-1 relative z-10">
-                        <div class="text-tech-emerald text-sm font-bold tracking-widest uppercase mb-2">B2B SaaS / Fintech</div>
-                        <h3 class="font-serif text-3xl text-white mb-6">flow-score</h3>
-                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-mr-12 relative z-20 hover:border-tech-emerald/30 transition-colors">
-                            FlowScore API, a "Thin-File" Open Banking Credit Underwriter designed for gig-economy workers and immigrants, strictly complying with UK FCA Consumer Duty regulations. Built with enterprise-grade architecture for Tier-1 financial institutions.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-8 relative z-20">
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">FastAPI</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">LangGraph</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Celery / Redis</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">PostgreSQL</span>
-                        </div>
-                        <a href="https://github.com/rishisubedi/flow-score" target="_blank" class="text-white font-semibold hover:text-tech-blue transition-colors flex items-center gap-2 group magnetic-link">
-                            View Source on GitHub <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                        </a>
+                <!-- 1. FlowScore API Metal Card -->
+                <div class="titanium-card p-10 reveal-project">
+                    <!-- Card Headers -->
+                    <div class="flex justify-between items-start mb-8">
+                        <i class="fa-solid fa-microchip chip-gradient text-5xl"></i>
+                        <i class="fa-solid fa-wifi fa-rotate-90 text-slate-500 text-3xl"></i>
                     </div>
-                    <div class="order-1 lg:order-2 glass-card overflow-hidden group">
-                        <div class="aspect-video relative overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Data Analytics and Dashboard representing FlowScore API" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 hardware-accelerated">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-tech-blue/40 to-transparent mix-blend-overlay"></div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <div class="text-tech-emerald text-xs font-bold tracking-widest uppercase mb-2">01 — B2B SaaS / Fintech</div>
+                            <h3 class="font-serif text-4xl text-white mb-4 tracking-wider uppercase">flow-score</h3>
+                            
+                            <div class="space-y-6 mt-8">
+                                <div class="bg-slate-950/50 p-4 rounded border border-rose-900/30">
+                                    <h4 class="text-rose-400 font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>The Problem</h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed">Gig-workers and immigrants are routinely locked out of credit due to "thin" credit files. Meanwhile, banks face massive regulatory fines if they breach FCA Consumer Duty affordability laws.</p>
+                                </div>
+                                <div class="bg-slate-950/50 p-4 rounded border border-tech-emerald/30">
+                                    <h4 class="text-tech-emerald font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-check-double mr-2"></i>The Solution</h4>
+                                    <p class="text-slate-300 text-sm leading-relaxed">A LangGraph Multi-Agent Underwriter that analyzes raw Open Banking data. It generates real-time Debt-to-Income (DTI) metrics and strict, dual-layer cryptographic audit trails to approve borrowers safely and compliantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col justify-end items-end relative">
+                            <!-- Premium Background graphic for the card -->
+                            <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop')] bg-cover mix-blend-overlay rounded-lg grayscale"></div>
+                            
+                            <div class="relative z-10 w-full text-right mt-12 lg:mt-0">
+                                <div class="flex flex-wrap justify-end gap-2 mb-8">
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">FastAPI</span>
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">LangGraph</span>
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Celery</span>
+                                </div>
+                                <a href="https://github.com/rishisubedi/flow-score" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 border border-slate-600 hover:border-tech-emerald hover:text-tech-emerald text-slate-300 transition-colors uppercase tracking-widest text-xs font-bold rounded magnetic-link">
+                                    Access Source <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SHIRE Metal Card -->
+                <div class="titanium-card p-10 reveal-project delay-100">
+                    <div class="flex justify-between items-start mb-8">
+                        <i class="fa-solid fa-microchip chip-gradient text-5xl"></i>
+                        <i class="fa-solid fa-wifi fa-rotate-90 text-slate-500 text-3xl"></i>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <div class="text-tech-blue text-xs font-bold tracking-widest uppercase mb-2">02 — LLM Routing Architecture</div>
+                            <h3 class="font-serif text-4xl text-white mb-4 tracking-wider uppercase">shire</h3>
+                            
+                            <div class="space-y-6 mt-8">
+                                <div class="bg-slate-950/50 p-4 rounded border border-rose-900/30">
+                                    <h4 class="text-rose-400 font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>The Problem</h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed">As financial institutions deploy multiple LLMs (OpenAI, Gemini, Local Models), routing sensitive financial prompts creates massive latency bottlenecks, payload bloat, and severe data security vulnerabilities.</p>
+                                </div>
+                                <div class="bg-slate-950/50 p-4 rounded border border-tech-blue/30">
+                                    <h4 class="text-tech-blue font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-check-double mr-2"></i>The Solution</h4>
+                                    <p class="text-slate-300 text-sm leading-relaxed">Secure High-Intelligence Routing Engine (SHIRE). A decentralized edge-routing architecture that intelligently load-balances LLM requests, ensuring military-grade payload encryption and low-latency intelligence delivery.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col justify-end items-end relative">
+                            <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop')] bg-cover mix-blend-overlay rounded-lg grayscale"></div>
+                            
+                            <div class="relative z-10 w-full text-right mt-12 lg:mt-0">
+                                <div class="flex flex-wrap justify-end gap-2 mb-8">
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Distributed Systems</span>
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Networking</span>
+                                </div>
+                                <a href="https://github.com/rishisubedi/shire" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 border border-slate-600 hover:border-tech-blue hover:text-tech-blue text-slate-300 transition-colors uppercase tracking-widest text-xs font-bold rounded magnetic-link">
+                                    Access Source <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2. SHIRE -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-project">
-                    <div class="glass-card overflow-hidden group">
-                        <div class="aspect-video relative overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop" alt="Digital network routing representing SHIRE" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 hardware-accelerated">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-tech-emerald/40 to-transparent mix-blend-overlay"></div>
-                        </div>
+                <!-- 3. APP-fraud-detection Metal Card -->
+                <div class="titanium-card p-10 reveal-project delay-200">
+                    <div class="flex justify-between items-start mb-8">
+                        <i class="fa-solid fa-microchip chip-gradient text-5xl"></i>
+                        <i class="fa-solid fa-wifi fa-rotate-90 text-slate-500 text-3xl"></i>
                     </div>
-                    <div class="relative z-10">
-                        <div class="text-tech-blue text-sm font-bold tracking-widest uppercase mb-2 text-right">LLM Routing Architecture</div>
-                        <h3 class="font-serif text-3xl text-white mb-6 text-right">shire</h3>
-                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-ml-12 relative z-20 text-right hover:border-tech-blue/30 transition-colors">
-                            SHIRE - Secure High-Intelligence Routing Engine. Engineered to optimize request routing and payload management across decentralized node architectures, ensuring security and low-latency intelligence delivery.
-                        </p>
-                        <div class="flex flex-wrap justify-end gap-2 mb-8 relative z-20">
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Distributed Systems</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Networking</span>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <div class="text-tech-emerald text-xs font-bold tracking-widest uppercase mb-2">03 — Security & Machine Learning</div>
+                            <h3 class="font-serif text-4xl text-white mb-4 tracking-wider uppercase">app-fraud-detection</h3>
+                            
+                            <div class="space-y-6 mt-8">
+                                <div class="bg-slate-950/50 p-4 rounded border border-rose-900/30">
+                                    <h4 class="text-rose-400 font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-triangle-exclamation mr-2"></i>The Problem</h4>
+                                    <p class="text-slate-400 text-sm leading-relaxed">Authorized Push Payment (APP) fraud costs banks billions annually. Traditional rule-based systems flag transactions post-execution, meaning the stolen funds have already left the victim's account permanently.</p>
+                                </div>
+                                <div class="bg-slate-950/50 p-4 rounded border border-rose-500/30">
+                                    <h4 class="text-rose-500 font-bold text-sm uppercase tracking-wider mb-2"><i class="fa-solid fa-check-double mr-2"></i>The Solution</h4>
+                                    <p class="text-slate-300 text-sm leading-relaxed">A real-time Machine Learning anomaly detection engine. It scores behavioral transaction deviations in milliseconds, identifying and freezing out-of-character transfers *before* the clearing cycle settles.</p>
+                                </div>
+                            </div>
                         </div>
-                        <a href="https://github.com/rishisubedi/shire" target="_blank" class="text-white font-semibold hover:text-tech-emerald transition-colors flex items-center justify-end gap-2 group magnetic-link">
-                            <i class="fa-solid fa-arrow-left transform group-hover:-translate-x-2 transition-transform"></i> View Source on GitHub
-                        </a>
-                    </div>
-                </div>
-
-                <!-- 3. APP-fraud-detection -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal-project">
-                    <div class="order-2 lg:order-1 relative z-10">
-                        <div class="text-tech-emerald text-sm font-bold tracking-widest uppercase mb-2">Security & Machine Learning</div>
-                        <h3 class="font-serif text-3xl text-white mb-6">APP-fraud-detection</h3>
-                        <p class="text-slate-400 mb-6 leading-relaxed bg-slate-900/60 p-6 rounded-lg border border-slate-800 backdrop-blur-md shadow-xl lg:-mr-12 relative z-20 hover:border-rose-500/30 transition-colors">
-                            A real-time transaction monitoring system that flags out-of-character transfers before the money leaves the account. Designed to combat Authorized Push Payment (APP) fraud in modern banking systems.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-8 relative z-20">
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Machine Learning</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Real-Time Data</span>
-                            <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Anomaly Detection</span>
-                        </div>
-                        <a href="https://github.com/rishisubedi/APP-fraud-detection" target="_blank" class="text-white font-semibold hover:text-tech-blue transition-colors flex items-center gap-2 group magnetic-link">
-                            View Source on GitHub <i class="fa-solid fa-arrow-right transform group-hover:translate-x-2 transition-transform"></i>
-                        </a>
-                    </div>
-                    <div class="order-1 lg:order-2 glass-card overflow-hidden group">
-                        <div class="aspect-video relative overflow-hidden bg-slate-800">
-                            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=1200&auto=format&fit=crop" alt="Financial charts and lock representing fraud detection" class="object-cover w-full h-full transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100 hardware-accelerated">
-                            <div class="absolute inset-0 bg-gradient-to-tr from-rose-500/30 to-transparent mix-blend-overlay"></div>
+                        
+                        <div class="flex flex-col justify-end items-end relative">
+                            <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=600&auto=format&fit=crop')] bg-cover mix-blend-overlay rounded-lg grayscale"></div>
+                            
+                            <div class="relative z-10 w-full text-right mt-12 lg:mt-0">
+                                <div class="flex flex-wrap justify-end gap-2 mb-8">
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Python</span>
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Machine Learning</span>
+                                    <span class="tech-badge cursor-default hover:-translate-y-1 transition-transform hardware-accelerated">Real-Time Data</span>
+                                </div>
+                                <a href="https://github.com/rishisubedi/APP-fraud-detection" target="_blank" class="inline-flex items-center gap-3 px-6 py-3 border border-slate-600 hover:border-rose-500 hover:text-rose-500 text-slate-300 transition-colors uppercase tracking-widest text-xs font-bold rounded magnetic-link">
+                                    Access Source <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
